@@ -1,0 +1,68 @@
+/* Estilo base para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Estilo para la sección principal */
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    padding: 20px;
+}
+
+/* Estilo para el contenido */
+.content {
+    text-align: left;
+    max-width: 60%;
+}
+
+/* Estilo para la imagen */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el pie de página */
+footer {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    top: 30em;
+    width: 100%;
+}
+
+/* Estilo para los botones de contacto en el pie de página */
+.contact-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.contact-buttons a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0653A6;
+    transition: background-color 0.3s;
+}
+
+.contact-buttons a:hover {
+    background-color: #1f6690;
+}

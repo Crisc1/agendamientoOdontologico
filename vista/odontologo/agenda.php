@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['DOCUMENTO'])) {
     $nombre = $_SESSION['NOMBRE'];
     $apellido = $_SESSION['APELLIDO'];
+    $idProfesional = $_SESSION['ID_PROFESIONAL'];
+    
 } else {
     header('Location: ../salidas/errorAccesoSinLogin.php');
     exit();
@@ -15,7 +17,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Lista de Citas</title>
+    <title>Agenda Odontologica</title>
     <link rel="stylesheet" href="../assets/css/styleEditarCitas.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script>
@@ -36,7 +38,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
             // Enviar la solicitud POST al script que realiza la consulta
             xhr.open('POST', '../controladores/ControlCitas.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.send('documento=<?php echo $documento; ?>'); // Puedes pasar otros parámetros según tu lógica
+            xhr.send('idProfesional=<?php echo $idProfesional; ?>'); // Puedes pasar otros parámetros según tu lógica
     
     
     function editarCita(idCita) {
@@ -99,7 +101,6 @@ if (isset($_SESSION['DOCUMENTO'])) {
             // Mostrar la tabla con los detalles de las citas
             echo "<table>
                     <tr>
-                        <th>Odontologo</th>
                         <th>Tipo de Cita</th>
                         <th>Fecha</th>
                         <th>Hora</th>
@@ -109,7 +110,6 @@ if (isset($_SESSION['DOCUMENTO'])) {
 
             while ($fila = $result->fetch_object()) {
                 echo "<tr>
-                        <td>{$fila->NOMBRE_PROFESIONAL}</td>
                         <td>{$fila->NOMBRE_TRATAMIENTO}</td>
                         <td>{$fila->FECHA}</td>
                         <td>{$fila->HORA}</td>

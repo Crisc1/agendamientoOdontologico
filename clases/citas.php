@@ -32,6 +32,10 @@ class citas{
         $this->documento= $documento;
     }
     
+    public function consultarAgendas($IdProfesional) {
+        $this->idProfesional= $IdProfesional;
+    }
+    
     public function eliminarCitas($idCita) {
         $this->idCita= $idCita;
     }

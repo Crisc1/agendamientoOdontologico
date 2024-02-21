@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Comprobar si hay una sesión activa
+if (isset($_SESSION['DOCUMENTO'])) {
+    // Resto del código para usuarios autenticados
+    $documento = $_SESSION['DOCUMENTO'];
+    $nombre = $_SESSION['NOMBRE'];
+    $apellido = $_SESSION['APELLIDO'];
+} else {
+    // Si no hay sesión activa, redirigir a la página de inicio de sesión
+    header('Location: ../salidas/errorAccesoSinLogin.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,18 +33,6 @@
     <h1>AGENDAMIENTO DE CITAS</h1>
     <form action="../../controladores/controlCitas.php" method="post">
         <div id="resultadoConsulta"></div>
-        <?php
-        session_start();
-
-        if (isset($_SESSION['DOCUMENTO'])) {
-            $documento = $_SESSION['DOCUMENTO'];
-            $nombre = $_SESSION['NOMBRE'];
-            $apellido = $_SESSION['APELLIDO'];
-        } else {
-            header('Location: ../salidas/errorAccesoSinLogin.php');
-            exit();
-        }
-        ?>
         <input type="hidden" name="documento" value="<?php echo $documento; ?>">
 
         <label for="especialidad">Servicio:</label>

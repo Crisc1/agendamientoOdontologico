@@ -31,6 +31,21 @@ if(isset($_POST['profesional'])&&isset($_POST['documento'])&&isset($_POST['trata
         }
     }
     
+        //Condicional para la consulta de agenda para el profesional
+    else if(isset($_POST['idProfesional'])){
+        try {
+            $idProfesional = $_POST['idProfesional'];
+            $cita = new citas();
+            $cita->consultarAgendas($idProfesional);
+            $consultarAgenda=new modeloCitas();
+            $result=$consultarAgenda->consultarAgenda($cita->getIdProfesional());
+            echo'',$idProfesional;
+            require '../vista/odontologo/agenda.php';
+        } catch (Exception $exc) {
+        echo 'Error:'. $exc;
+        }
+    }
+    
     if (isset($_GET['action']) && $_GET['action'] === 'eliminar') {
         if (isset($_GET['idCita'])) {
             $idCitaEliminar = $_GET['idCita'];

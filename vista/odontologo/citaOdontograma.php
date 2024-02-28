@@ -19,7 +19,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Agenda Odontologica</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/styleEditarCitas.css">
+    <link rel="stylesheet" href="../../assets/css/styleEditarCitas.css">
 <script>
     
        // Utilizar AJAX para cargar los datos de la consulta al cargar la página
@@ -36,7 +36,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
             };
 
             // Enviar la solicitud POST al script que realiza la consulta
-            xhr.open('POST', '../controladores/ControlCitas.php', true);
+            xhr.open('POST', '../../controladores/controlCitas.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.send('idProfesional=<?php echo $idProfesional; ?>'); // Puedes pasar otros parámetros según tu lógica
     

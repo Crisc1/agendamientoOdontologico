@@ -11,6 +11,25 @@ body {
     height: 100vh;
 }
 
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: #ffffff;
+}
+
+.volver-container {
+    background-color: red; /* Fondo rojo */
+    padding: 0px 10px 0px 10px;
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+.volver-link {
+    color: white; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+} 
+
 div {
     background-color: #fff;
     padding: 20px;

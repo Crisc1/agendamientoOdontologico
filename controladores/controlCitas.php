@@ -1,5 +1,5 @@
 <?php
-include '../clases/citas.php';  
+include '../clases/Clasecitas.php';  
 include '../modelo/modeloCitas.php';
 
 if(isset($_POST['profesional'])&&isset($_POST['documento'])&&isset($_POST['tratamiento'])&&isset($_POST['fecha'])&&isset($_POST['hora'])&&isset($_POST['consultorio'])){
@@ -32,14 +32,13 @@ if(isset($_POST['profesional'])&&isset($_POST['documento'])&&isset($_POST['trata
     }
     
         //Condicional para la consulta de agenda para el profesional
-    else if(isset($_POST['idProfesional'])){
+    else if(isset($_POST['idProfesionalAgenda'])){
         try {
-            $idProfesional = $_POST['idProfesional'];
+            $idProfesional = $_POST['idProfesionalAgenda'];
             $cita = new citas();
             $cita->consultarAgendas($idProfesional);
             $consultarAgenda=new modeloCitas();
             $result=$consultarAgenda->consultarAgenda($cita->getIdProfesional());
-            echo'',$idProfesional;
             require '../vista/odontologo/agenda.php';
         } catch (Exception $exc) {
         echo 'Error:'. $exc;

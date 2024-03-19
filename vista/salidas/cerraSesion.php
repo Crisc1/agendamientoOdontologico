@@ -4,5 +4,5 @@ session_start();
 $_SESSION = array();
 
 session_destroy();
-header('Location: ../menus/landingPage.php');
+header('Location: ../../index.html');
 exit();

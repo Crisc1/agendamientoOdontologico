@@ -37,8 +37,7 @@ $resultado = $conexion->obtenerResult();
 
     //Redirigir según el rol
     if ($_SESSION['ID_ROL'] === '1') {
-        //header("Location: ../vista/menus/menuAdministrador.php");
-        echo'Rol 1';
+        header("Location: ../vista/menus/menuAdministrador.php");
     } elseif ($_SESSION['ID_ROL'] === '2') {
         echo'Rol 2';
         //header("Location: ../vista/menus/menuRecepcion.php");

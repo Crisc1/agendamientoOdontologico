@@ -23,7 +23,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bienvenido</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/styleMenuUsuario.css">
+    <link rel="stylesheet" href="../../assets/css/styleMenu.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -33,7 +33,7 @@ if (isset($_SESSION['DOCUMENTO'])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../usuario/editarDatos.php">Editar Perfil</a>
+                    <a class="nav-link" href="../paciente/editarDatos.php">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../salidas/cerraSesion.php">Cerrar Sesión</a>
@@ -51,17 +51,14 @@ if (isset($_SESSION['DOCUMENTO'])) {
                     <h2>Agenda Odontológica</h2>
                     <p>Aca podras ver tu agenda de citas.</p>
                     <form action="../../controladores/controlCitas.php" method="post">
-                        <input type="text" name="idProfesional" id="idProfesional" value="<?php echo $idProfesional; ?>">
+                        <input type="hidden" name="idProfesionalAgenda" id="idProfesionalAgenda" value="<?php echo $idProfesional; ?>">
                         <button type="submit" class="btn btn-primary">Consultar Agenda</button>
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <h2>Edicion de citas</h2>
-                    <p>Gestiona tus cita odontologicas.</p>
-                    <form action="../../controladores/controlCitas.php" method="post">
-                        <input type="hidden" name="documento" id="documento" value="<?php echo $documento; ?>">
-                        <button type="submit" class="btn btn-primary">Modificar Citas</button>
-                    </form>
+                    <h2>Historial Odontólogico</h2>
+                    <p>Consuta y/o añade novedades al historial de un paciente.</p>
+                    <a href="../odontologo/historialMenu.php" class="btn btn-primary">Consultar - Generar</a>
                 </div>
             </div>
         </div>

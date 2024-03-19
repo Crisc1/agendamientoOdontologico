@@ -1,15 +1,27 @@
 <?php
 session_start();
 
+// Comprobar si hay una sesión activa
 if (isset($_SESSION['DOCUMENTO'])) {
+    // Resto del código para usuarios autenticados
     $documento = $_SESSION['DOCUMENTO'];
     $nombre = $_SESSION['NOMBRE'];
     $apellido = $_SESSION['APELLIDO'];
+    $idProfesional = $_SESSION['ID_PROFESIONAL'];
+    
+    // Obtener el documento del paciente desde el query parameter
+    $documento_paciente = isset($_GET['documento_paciente']) ? $_GET['documento_paciente'] : '';
+
+
 } else {
+    // Si no hay sesión activa, redirigir a la página de inicio de sesión
     header('Location: ../salidas/errorAccesoSinLogin.php');
     exit();
 }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,42 +29,29 @@ if (isset($_SESSION['DOCUMENTO'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bienvenido</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/paciente/styleMenuPaciente.css">
+    <link rel="stylesheet" href="../../assets/css/styleMenu.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Centro Odontológico</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="../paciente/editarDatos.php">Editar Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../salidas/cerraSesion.php">Cerrar Sesión</a>
-                </li>
-            </ul>
-        </div>
     </nav>
 
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4">¡Bienvenido, <?php echo $nombre . ' ' . $apellido; ?>!</h1>
+            <h1 class="display-4">ODONTOGRAMA</h1>
             <hr class="my-4">
             <div class="row servicios-citas">
                 <div class="col-md-6">
-                    <h2>Agendamiento</h2>
-                    <p>Agenda tu cita con nosotros.</p>
-                    <a href="../paciente/agendamientoCitas.php" class="btn btn-primary">Agendar Cita</a>
+                    <h2>Odontograma Adulto</h2>
+                    <p>Aqui podrás generar el odontograma de un adulto.</p>
+                    <button onclick="confirmAsistencia('<?php echo $documento_paciente; ?>')" class="btn btn-primary">Asistencia</button>
                 </div>
                 <div class="col-md-6">
-                    <h2>Edicion de citas</h2>
-                    <p>Gestiona tus cita odontologicas.</p>
-                    <form action="../../controladores/controlCitas.php" method="post">
-                        <input type="hidden" name="documento" id="documento" value="<?php echo $documento; ?>">
-                        <button type="submit" class="btn btn-primary">Modificar Citas</button>
-                    </form>
+                    <h2>Odontograma Niño</h2>
+                    <p>Aqui podrás generar el odontograma de un niño.</p>
+                    <button onclick="inasistencia('<?php echo $documento_paciente; ?>')" class="btn btn-primary">Inasistencia</button>
                 </div>
             </div>
         </div>
